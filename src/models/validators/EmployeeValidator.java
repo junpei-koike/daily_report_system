@@ -31,7 +31,7 @@ public class EmployeeValidator {
     }
 
     // 社員番号
-    private static String _validateCode(String code, Boolean code_dupulicate_check_flag){
+    private static String _validateCode(String code, Boolean code_duplicate_check_flag){
         // 必須入力チェック
         if(code == null || code.equals("")){
             return "社員番号を入力してください。";
@@ -39,8 +39,8 @@ public class EmployeeValidator {
 
         // 既に登録されている社員番号との重複チェック
         if(code_duplicate_check_flag){
-            EntityManager em = DBUtil.createEntityManager()
-                    long employees_count = (long)em.createNamedQuery(("checkRegisteredCode", Long.class)
+            EntityManager em = DBUtil.createEntityManager();
+                    long employees_count = (long)em.createNamedQuery("checkRegisteredCode", Long.class)
                                                     .setParameter("code", code)
                                                     .getSingleResult();
                     em.close();
